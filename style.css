@@ -62,11 +62,11 @@ body{
   -webkit-mask-image: radial-gradient(circle at 0% 45%, transparent 79px, white 80px);
   mask-image: radial-gradient(circle at 0% 45%, transparent 79px, white 80px);
 }
-.heart-c{
+.circle-c{
     position: absolute;
     top: 45%;
     left: 50%;
-    transform: translate(-50%, calc(-50% + 5px));
+    transform: translate(-50%, -50%);
     height: 150px;
     width: 150px;
     display: flex;
@@ -74,30 +74,33 @@ body{
     justify-content: center;
     z-index: 10;
 }
-.heart{
+.circle{
     height: 100%;
     width: 100%;
-    fill: #FFC2D1;
+    fill: #FFB3C1;
     filter: drop-shadow(0 4px 8px #E2A2B1);
     position: absolute;
+    z-index: 10;
 }
-.loader-intro-c{
+.heart-c{
     position: absolute;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 170px;
     width: 170px;
-    z-index: 9;
+    z-index: 9
 }
-.loader-intro{
+.heart{
     height: 100%;
     width: 100%;
-    fill: transparent;
-    stroke: #FFFFFF;
-    stroke-width: 6px;
-    stroke-dasharray: 515.2;
-    stroke-dashoffset: 515.2;
+    fill: #FFAEC0;
+    fill-opacity: 0;
+    stroke: #FFF0F3;
+    stroke-width: 1px;
+    stroke-dasharray: 70.5;
+    stroke-dashoffset: 70.5;
     stroke-linecap: round;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    filter: drop-shadow(0 0 2px white);
+    z-index: 9;
 }

@@ -72,4 +72,9 @@ circle.onclick = function(){
         opacity: 0,
         duration: 0.5
     })
+    tl.to(document.body, {
+        backgroundColor: "#800F2F",
+        duration: 0.8,
+        ease: "power2.inOut"
+    }, "<");
 }

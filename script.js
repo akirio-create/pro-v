@@ -12,8 +12,13 @@ const cLoop = gsap.from(circle, {
     duration: 2,
 })
 
+gsap.set(".intro-text-h", {
+    xPercent: -50,
+    yPercent: -50
+})
+
 circle.onclick = function(){
-    cLoop.pause();
+    cLoop.kill();
 
     const speed = 0.8/2;
     const currentS = gsap.getProperty(circle, "scale");
@@ -29,13 +34,13 @@ circle.onclick = function(){
         ease: "none"
     })
     tl.to(door1, {
-        x: "-50vw",
-        ease: "power2.in",
+        xPercent: "-100",
+        ease: "expo.inOut",
         duration: 2.5
     })
     tl.to(door2, {
-        x: "50vw",
-        ease: "power2.in",
+        xPercent: "100",
+        ease: "expo.inOut",
         duration: 2.5
     }, "<")
     tl.to(circle, {
@@ -73,9 +78,28 @@ circle.onclick = function(){
         duration: 0.5,
         ease: "power2.in"
     })
+    tl.set([".circle-c", ".heart-c"], { display: "none" });
     tl.to(".bg", {
         opacity: 1,
         duration: 1,
-        ease: "power2.in"
+        ease: "linear"
     });
+    tl.to(".intro-text-h", {
+        opacity: 1,
+        duration: 0.1
+    })
+    tl.from(".intro-text-h span", {
+        opacity: 0,
+        duration: 2,
+        ease: "power3.out",
+        y: "30px",
+        stagger: 0.5,
+        force3D: true
+    })
+    tl.to(".scroll-down",{
+        opacity: 0.8,
+        duration: 0.5,
+        ease: "power2.in",
+        delay: 1
+    })
 }

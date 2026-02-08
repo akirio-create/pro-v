@@ -94,14 +94,14 @@ body{
 .heart{
     height: 100%;
     width: 100%;
-    fill: #FFAEC0;
+    fill: #ffaec0;
     fill-opacity: 0;
-    stroke: #FFF0F3;
+    stroke: #ffaec0;
     stroke-width: 1px;
     stroke-dasharray: 70.5;
     stroke-dashoffset: 70.5;
     stroke-linecap: round;
-    filter: drop-shadow(0 0 2px white);
+    filter: drop-shadow(0 0 4px #db90a0);
     z-index: 9;
 }
 .bg{
@@ -115,4 +115,42 @@ body{
   background-position: center;
   z-index: -1;
   opacity: 0;
+}
+.intro-text-h{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  color: #5E3A41;
+  font-family: "Dancing Script", cursive;
+  font-style: normal;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  opacity: 0;
+  z-index: 5;
+  display: block;
+}
+.intro-text-h .line{
+  display: block;
+}
+
+.intro-text-h .line:first-child{
+  font-weight: 500;
+}
+
+.intro-text-h .line:last-child{
+  font-weight: 700;
+}
+.scroll-down{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.3rem;
+  font-family: "Montserrat", sans-serif;
+  white-space: nowrap;
+  font-weight: 700;
+  color: #4A202C;
+  opacity: 0;
+  letter-spacing: 2px;
 }

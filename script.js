@@ -55,26 +55,27 @@ circle.onclick = function(){
     })
     tl.to(heart, {
         scale: 0.9,
-        duration: 1
+        duration: 1,
     })
     tl.to(heart, {
         scale: 1,
         duration: 1,
         stroke: "#FFAEC0",
-        filter: "drop-shadow(0 0 10px #FFAEC0)"
+        filter: "drop-shadow(0 0 10px #FFAEC0)",
     })
     tl.to(heart, {
         scale: 0.9,
         duration: 1
     })
     tl.to(heart, {
-        scale: 2,
+        scale: 0,
         opacity: 0,
-        duration: 0.5
+        duration: 0.5,
+        ease: "power2.in"
     })
-    tl.to(document.body, {
-        backgroundColor: "#800F2F",
-        duration: 0.8,
-        ease: "power2.inOut"
-    }, "<");
+    tl.to(".bg", {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.in"
+    });
 }

@@ -143,7 +143,7 @@ body{
 }
 .scroll-down{
   position: absolute;
-  bottom: 50px;
+  bottom: 30%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.3rem;

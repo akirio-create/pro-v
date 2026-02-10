@@ -258,10 +258,10 @@ body.no-scroll {
 
 .pics {
     position: absolute;
-    height: 45vh;
+    height: 55vh;
     width: 90vw;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
     background-color: white;
     padding: 15px 15px 60px 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);

@@ -174,6 +174,13 @@ function initGalleryAnimation() {
             end: "+=6000",
             scrub: 1,
             pin: true,
+            onUpdate: (self) => {
+                // When scroll reaches the end (progress = 1), transition
+                if (self.progress >= 0.99 && !window.yesNoTransitioned) {
+                    window.yesNoTransitioned = true;
+                    transitionToYesNoPage();
+                }
+            }
         }
     });
 
@@ -231,4 +238,193 @@ function initGalleryAnimation() {
         // Viewing time pause
         tl2.to({}, { duration: 4 }); 
     });
+    
+    // Final pause before transitioning
+    tl2.to({}, { duration: 2 });
+}
+
+// Function to transition from gallery to yes-no page
+function transitionToYesNoPage() {
+    const transitionTl = gsap.timeline();
+    
+    // Fade out gallery
+    transitionTl.to(".gallery-section", {
+        opacity: 0,
+        duration: 1.5,
+        ease: "power2.inOut"
+    });
+    
+    // Show yes-no page
+    transitionTl.set(".yes-no", { display: "flex" });
+    
+    // Fade in yes-no page
+    transitionTl.from(".yes-no", {
+        opacity: 0,
+        duration: 1.5,
+        ease: "power2.out"
+    });
+    
+    // Animate glow points
+    transitionTl.from(".glow-point", {
+        scale: 0,
+        opacity: 0,
+        duration: 1.5,
+        stagger: 0.3,
+        ease: "power2.out"
+    }, "-=1");
+    
+    // Animate text box
+    transitionTl.from(".text", {
+        scale: 0.8,
+        opacity: 0,
+        y: 100,
+        duration: 1.5,
+        ease: "back.out(1.7)"
+    }, "-=1");
+    
+    // Animate text content
+    transitionTl.from(".text p", {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        ease: "power2.out"
+    }, "-=0.5");
+    
+    // Animate "WILL YOU??" text
+    transitionTl.from(".text2", {
+        scale: 0,
+        opacity: 0,
+        rotation: -10,
+        duration: 1.5,
+        ease: "elastic.out(1, 0.5)"
+    }, "-=0.5");
+    
+    // Animate buttons
+    transitionTl.from(".buttons", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out"
+    }, "-=0.5");
+    
+    transitionTl.from(".y", {
+        x: -100,
+        opacity: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)"
+    }, "-=0.8");
+    
+    transitionTl.from(".n", {
+        x: 100,
+        opacity: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)"
+    }, "-=0.8");
+}
+
+// Button Click Handlers - Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', () => {
+    const yesBtn = document.querySelector(".y");
+    const noBtn = document.querySelector(".n");
+    const textResult = document.querySelector(".text3");
+    
+    if (yesBtn) {
+        yesBtn.onclick = function() {
+            // Button celebration animation
+            gsap.to(yesBtn, {
+                scale: 1.2,
+                duration: 0.3,
+                yoyo: true,
+                repeat: 1,
+                ease: "power2.out"
+            });
+            
+            // Show result text with animation
+            textResult.innerHTML = "Love you soooo muchhhhh.<br>Can't wait to meet youuuu...❤️❤️😘";
+            
+            gsap.from(textResult, {
+                scale: 0.8,
+                opacity: 0,
+                y: 20,
+                duration: 1,
+                ease: "back.out(2)"
+            });
+            
+            // Confetti effect with hearts
+            createHeartConfetti();
+        };
+    }
+    
+    if (noBtn) {
+        noBtn.onclick = function() {
+            // Shake animation for NO button
+            gsap.to(noBtn, {
+                x: -10,
+                duration: 0.1,
+                yoyo: true,
+                repeat: 5,
+                ease: "power1.inOut"
+            });
+            
+            // Show alert after shake
+            setTimeout(() => {
+                alert("NAHHH. You are mine forever, go click YES!!!");
+                
+                // Move button to random position
+                const maxX = window.innerWidth * 0.3;
+                const maxY = window.innerHeight * 0.2;
+                const x = (Math.random() - 0.5) * maxX;
+                const y = (Math.random() - 0.5) * maxY;
+                
+                gsap.to(noBtn, { 
+                    x: x, 
+                    y: y, 
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            }, 600);
+        };
+    }
+});
+
+// Function to create heart confetti effect
+function createHeartConfetti() {
+    const yesNoSection = document.querySelector('.yes-no');
+    
+    for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '♥';
+        heart.style.position = 'absolute';
+        heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+        heart.style.color = '#FFB3C1';
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.top = `${Math.random() * 100}%`;
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '1000';
+        yesNoSection.appendChild(heart);
+        
+        gsap.fromTo(heart, 
+            {
+                opacity: 0,
+                scale: 0,
+                rotation: 0
+            },
+            {
+                opacity: 1,
+                scale: 1.5,
+                rotation: 360,
+                duration: 1,
+                ease: "power2.out",
+                onComplete: () => {
+                    gsap.to(heart, {
+                        y: -200,
+                        opacity: 0,
+                        duration: 2,
+                        ease: "power1.in",
+                        onComplete: () => heart.remove()
+                    });
+                }
+            }
+        );
+    }
 }

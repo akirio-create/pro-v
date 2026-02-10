@@ -37,21 +37,16 @@ body.no-scroll {
 
 .door:first-child {
     background: 
-        /* 1. The Circle Rim (10px) - Keep this at the top */
         radial-gradient(circle at 100% 45%, 
             transparent 79.5px, 
             var(--intro-border) 80px, 
             var(--intro-border) 89px, 
             transparent 89.5px),
-        /* 2. Middle Seam (10px) - Must stay on top of the 30px bars */
         linear-gradient(to left, var(--intro-border) 10px, transparent 10px) 100% 0% / 100% 100% no-repeat,
-        /* 3. Outer Frame (All 30px) */
-        linear-gradient(to right, var(--intro-border) 30px, transparent 30px), /* Left Side */
-        linear-gradient(to bottom, var(--intro-border) 30px, transparent 30px), /* Top Side */
-        linear-gradient(to top, var(--intro-border) 30px, transparent 30px),    /* Bottom Side */
-        /* 4. Base Color */
+        linear-gradient(to right, var(--intro-border) 30px, transparent 30px),
+        linear-gradient(to bottom, var(--intro-border) 30px, transparent 30px),
+        linear-gradient(to top, var(--intro-border) 30px, transparent 30px),
         #FFF0F3;
-    
     border: none;
     -webkit-mask-image: radial-gradient(circle at 100% 45%, transparent 79px, white 80px);
     mask-image: radial-gradient(circle at 100% 45%, transparent 79px, white 80px);
@@ -59,21 +54,16 @@ body.no-scroll {
 
 .door:nth-child(2) {
     background: 
-        /* 1. The Circle Rim (10px) */
         radial-gradient(circle at 0% 45%, 
             transparent 79.5px, 
             var(--intro-border) 80px, 
             var(--intro-border) 89px, 
             transparent 89.5px),
-        /* 2. Middle Seam (10px) */
         linear-gradient(to right, var(--intro-border) 10px, transparent 10px) 0% 0% / 100% 100% no-repeat,
-        /* 3. Outer Frame (All 30px) */
-        linear-gradient(to left, var(--intro-border) 30px, transparent 30px),  /* Right Side */
-        linear-gradient(to bottom, var(--intro-border) 30px, transparent 30px), /* Top Side */
-        linear-gradient(to top, var(--intro-border) 30px, transparent 30px),    /* Bottom Side */
-        /* 4. Base Color */
+        linear-gradient(to left, var(--intro-border) 30px, transparent 30px),
+        linear-gradient(to bottom, var(--intro-border) 30px, transparent 30px),
+        linear-gradient(to top, var(--intro-border) 30px, transparent 30px),
         #FFF0F3;
-
     border: none;
     -webkit-mask-image: radial-gradient(circle at 0% 45%, transparent 79px, white 80px);
     mask-image: radial-gradient(circle at 0% 45%, transparent 79px, white 80px);
@@ -199,7 +189,7 @@ body.no-scroll {
     width: 90%;
     max-width: 600px;
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(5px) saturate(150%);
+    backdrop-filter: blur(12px) saturate(150%);
     border-radius: 30px;
     position: absolute;
     top: 30%;
@@ -258,8 +248,9 @@ body.no-scroll {
 
 .pics {
     position: absolute;
-    height: 55vh;
+    height: 40vh;
     width: 90vw;
+    max-width: 500px;
     object-fit: cover;
     object-position: top;
     background-color: white;
@@ -267,37 +258,186 @@ body.no-scroll {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     opacity: 0;
     filter: sepia(0.5) hue-rotate(300deg) saturate(1.2);
-    object-fit: cover;
     left: 50%;
     bottom: 5vh;
     transform: translateX(-50%);
 }
 
+/* Valentine Proposal Page */
+.yes-no {
+    background: linear-gradient(180deg, #2D161B 0%, #1a0b0e 100%);
+    padding: 40px 20px;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.text {
+    height: 45vh;
+    width: 90vw;
+    max-width: 900px;
+    display: flex;
+    color: #FFF0F3;
+    background-color: rgba(82, 79, 79, 0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 179, 193, 0.2);
+}
+
+.text p {
+    text-align: center;
+    font-size: 3.5vh;
+    color: #FFB3C1;
+    line-height: 1.8;
+    font-family: "Shadows Into Light", cursive;
+    text-shadow: 0 0 20px rgba(255, 179, 193, 0.3);
+    margin: 0;
+}
+
+.forever {
+    font-family: "Barrio", system-ui;
+    color: #5E3A41;
+    -webkit-text-stroke: 0.5px #FFB3C1;
+    font-size: 4vh;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.text2 {
+    color: #FFB3C1;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 4px;
+    font-weight: bold;
+    font-size: 5.5vh;
+    text-shadow: 0 0 25px rgba(255, 179, 193, 0.8),
+                 0 0 50px rgba(255, 179, 193, 0.5);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 25%;
+    display: flex;
+    gap: 40px;
+}
+
+.text3 {
+    position: absolute;
+    bottom: 8vh;
+    font-size: 3.5vh;
+    font-family: "Space Grotesk", sans-serif;
+    color: #FFB3C1;
+    text-align: center;
+    max-width: 90%;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 0 0 15px rgba(255, 179, 193, 0.5);
+}
+
+button {
+    border: none;
+    color: #2D161B;
+    background: linear-gradient(135deg, #FFB3C1 0%, #db90a0 100%);
+    padding: 15px 50px;
+    border-radius: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 179, 193, 0.5);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.glow-point {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 179, 193, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(30px);
+    z-index: 1;
+    animation: float 8s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.glow-point:nth-child(2) {
+    animation-delay: 2s;
+    animation-duration: 10s;
+}
+
+.glow-point:nth-child(3) {
+    animation-delay: 4s;
+    animation-duration: 12s;
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-30px) scale(1.1);
+        opacity: 0.8;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-    .intro-text-h {
-        font-size: 2rem;
+    .text {
+        height: auto;
+        min-height: 40vh;
+        padding: 25px;
     }
     
-    .scroll-down {
-        font-size: 1rem;
+    .text p {
+        font-size: 2.5vh;
+    }
+    
+    .forever {
+        font-size: 3vh;
+    }
+    
+    .text2 {
+        font-size: 4.5vh;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        gap: 20px;
         bottom: 20%;
     }
     
-    .caption {
-        font-size: 35px;
+    button {
+        font-size: 1.8rem;
+        padding: 12px 40px;
     }
     
-    .sub-cap {
-        font-size: 14px;
-        letter-spacing: 2px;
-    }
-    
-    #rose {
-        height: 300px;
-    }
-    
-    .pics {
-        height: 30vh;
+    .text3 {
+        font-size: 2.5vh;
+        bottom: 5vh;
     }
 }
